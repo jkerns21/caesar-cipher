@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Cipher2
 {
@@ -23,6 +24,20 @@ public class Cipher2
 			System.out.println("Would you like to encrypt, decrypt, or crack a file?");
 			encdec = keyboard.nextLine();
 		}
+		//######################################
+		String cp;
+		System.out.println("What algorithm would you like to use? ('c' for caesar or 'p'  for permutation");
+		cp = keyboard.nextLine();
+		if (cp.equals("c"))
+		{
+			
+		}
+		else if (cp.equals("p"))
+		{
+			char[] perm = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+			System.out.println("The following permuted alphabet will be used for encryption");
+		}
+		
 		if (encdec.equals("encrypt"))
 		{
 			encrypt = true;
@@ -72,6 +87,19 @@ public class Cipher2
 		}				
 		outputFile.print(cipher);
 		outputFile.close();
+	}
+	public static String perm_cipher(String fileName, boolean encrypt, char[] perm)
+	{
+		Random rand;
+		for (int i = 0; i < 25; i++)
+		{
+			rand = new Random();
+			int index  = rand.nextInt(25);
+			char temp =  perm[i];
+			perm[i] = perm[index];
+			perm[index] = temp;
+		}
+		return perm[];
 	}
 	public static String caesar_cipher(String fileName, boolean encrypt, int shiftAmount) throws IOException
 	{
